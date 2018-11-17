@@ -1,0 +1,3 @@
+rootProject.name = 'beltcalc_reactnative'
+
+include ':app'
