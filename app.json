@@ -1,7 +1,4 @@
 {
   "name": "beltcalc_reactnative",
-  "displayName": "beltcalc_reactnative",
-  "expo": {
-    "sdkVersion": "31.0.5"
-  }
+  "displayName": "Belt Calculator"
 }

@@ -1,9 +1,8 @@
-import React, {
-  Component
-} from "react";
-import Profile from "./Profile.js";
-import EditScreenOne from "./EditScreenOne.js";
-import EditScreenTwo from "./EditScreenTwo.js";
+import React from "react";
+import Profile from "./StepOne.js";
+import StepTwo from "./StepTwo.js";
+import StepThree from "./StepThree.js";
+import StepFour from "./StepFour.js";
 import {
   StackNavigator,
   NavigationAction
@@ -12,10 +11,13 @@ export default (DrawNav = StackNavigator({
   Profile: {
     screen: Profile
   },
-  EditScreenOne: {
-    screen: EditScreenOne
+  StepTwo: {
+    screen: StepTwo
   },
-  EditScreenTwo: {
-    screen: EditScreenTwo
+  StepThree: {
+    screen: StepThree
+  },
+  StepFour: {
+    screen: StepFour
   }
 }));

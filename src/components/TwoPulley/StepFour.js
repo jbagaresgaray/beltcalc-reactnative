@@ -2,9 +2,7 @@ import React from "react";
 import { AppRegistry, Alert } from "react-native";
 import { Container, Header, Left, Body, Title, Card, CardItem, Content, Right, Icon, Button, Text } from "native-base";
 import { StackNavigator } from "react-navigation";
-import EditScreenOne from "./EditScreenOne.js";
-import EditScreenTwo from "./EditScreenTwo.js";
-export default class Profile extends React.Component {
+export default class StepFour extends React.Component {
   componentDidMount() {
     Alert.alert("No Users Found", "Oops, Looks like you are not signed in");
   }
@@ -31,7 +29,7 @@ export default class Profile extends React.Component {
     );
   }
 }
-Profile.navigationOptions = ({ navigation }) => ({
+StepFour.navigationOptions = ({ navigation }) => ({
   header: (
     <Header>
       <Left>
@@ -40,7 +38,7 @@ Profile.navigationOptions = ({ navigation }) => ({
         </Button>
       </Left>
       <Body>
-        <Title>Profile</Title>
+        <Title>StepFour</Title>
       </Body>
       <Right />
     </Header>

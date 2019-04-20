@@ -16,7 +16,7 @@ export default class AboutScreen extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title style={styles.lightColor}>HomeScreen</Title>
+            <Title style={styles.lightColor}>About</Title>
           </Body>
         </Header>
         <Content padder style={styles.padding}>

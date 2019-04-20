@@ -1,8 +1,8 @@
 import React from "react";
-import { StatusBar, StyleSheet, Image } from "react-native";
-import { Container, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem, View } from "native-base";
+import { StatusBar, StyleSheet, Image,View } from "react-native";
+import { Container, Header, Title, Left, Icon, Right, Button, Body, Content,Text, Card, CardItem } from "native-base";
 
-import styles from "../../assets/styles-css";
+import styles from "./home.style";
 
 export default class HomeScreen extends React.Component {
   render() {
@@ -15,7 +15,7 @@ export default class HomeScreen extends React.Component {
     };
 
     return (
-      <Container>
+      <Container style={styles.textCenter}>
         <Header style={styles.toolbarBackground} androidStatusBarColor="#000000">
           <Left>
             <Button
@@ -28,25 +28,23 @@ export default class HomeScreen extends React.Component {
             <Title style={styles.lightColor}>HomeScreen</Title>
           </Body>
           <Right>
-          <Button
-              transparent>
+          <Button transparent onPress={() => this.props.navigation.navigate('Settings')}>
               <Icon style={styles.lightColor} name="settings" />
             </Button>
           </Right>
         </Header>
-        <Content padder style={[styles.padding, styles.blue]}>
+        <Content padder style={[styles.padding,styles.blue]}>
         <Text h4 style={[styles.textCenter, styles.lightColor]}>Choose the number of pulleys</Text>
-
         <View style={[styles.intro]}>
           <Button full light
             style={styles.introBtn}
-            onPress={() => this.props.navigation.navigate("Chat")}>
+            onPress={() => this.props.navigation.navigate("TwoPulley")}>
             <Image source={require('../../assets/images/intro-2.png')} style={styles.introImg}/>
             <Text style={styles.introText}>TWO PULLEYS</Text>
           </Button>
           <Button full light
             style={styles.introBtn}
-            onPress={() => this.props.navigation.navigate("Profile")}>
+            onPress={() => this.props.navigation.navigate("ThreePulley")}>
             <Image source={require('../../assets/images/intro-3.png')} style={styles.introImg}/>
             <Text style={styles.introText}>THREE PULLEYS</Text>
           </Button>

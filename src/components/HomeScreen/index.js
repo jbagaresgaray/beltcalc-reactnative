@@ -1,34 +1,57 @@
-import React, {
-  Component
-} from "react";
+import React, { Component } from "react";
+import {
+  DrawerNavigator,
+  createStackNavigator,
+  createAppContainer
+} from "react-navigation";
+
 import HomeScreen from "./HomeScreen.js";
 import AboutScreen from "../About/AboutScreen";
 import SettingsScreen from "../Settings/SettingsScreen";
 import MainScreenNavigator from "../ThreePulley/index.js";
-import Profile from "../TwoPulley/index.js";
+import StepOne from "../TwoPulley/index.js";
 import SideBar from "../SideBar/SideBar.js";
-import {
-  DrawerNavigator
-} from "react-navigation";
-const HomeScreenRouter = DrawerNavigator({
-  Home: {
-    screen: HomeScreen
+
+const HomeScreenRouter = DrawerNavigator(
+  {
+    Home: {
+      screen: HomeScreen
+    },
+    TwoPulley: {
+      screen: StepOne
+    },
+    ThreePulley: {
+      screen: MainScreenNavigator
+    },
+    About: {
+      screen: AboutScreen
+    }
   },
-  Chat: {
-    screen: MainScreenNavigator
-  },
-  Profile: {
-    screen: Profile
-  },
-  About: {
-    screen: AboutScreen
-  },
-  Settings: {
-    screen: SettingsScreen
+  {
+    contentComponent: props => <SideBar {...props} />
   }
-}, {
-  contentComponent: props => < SideBar { ...props
+);
+
+const AppNavigatorRouter = createStackNavigator(
+  {
+    Settings: {
+      screen: SettingsScreen,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    Drawer: {
+      screen: HomeScreenRouter,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    }
+  },
+  {
+    initialRouteName: "Drawer"
   }
-  />
-});
-export default HomeScreenRouter;
+);
+
+export default AppNavigatorRouter;
