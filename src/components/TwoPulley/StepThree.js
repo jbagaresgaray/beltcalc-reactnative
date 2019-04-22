@@ -2,7 +2,7 @@ import React from "react";
 import { AppRegistry, Alert } from "react-native";
 import { Container, Header, Left, Body, Title, Card, CardItem, Content, Right, Icon, Button, Text } from "native-base";
 import { StackNavigator } from "react-navigation";
-export default class StepThree extends React.Component {
+export default class StepThreeTwo extends React.Component {
   componentDidMount() {
     Alert.alert("No Users Found", "Oops, Looks like you are not signed in");
   }
@@ -29,7 +29,7 @@ export default class StepThree extends React.Component {
     );
   }
 }
-StepThree.navigationOptions = ({ navigation }) => ({
+StepThreeTwo.navigationOptions = ({ navigation }) => ({
   header: (
     <Header>
       <Left>

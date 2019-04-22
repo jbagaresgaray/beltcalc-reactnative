@@ -1,25 +1,18 @@
 import React from "react";
 import { AppRegistry, Alert } from "react-native";
 import { Container, Card, CardItem, Body, Content, Header, Left, Right, Icon, Title, Button, Text,Footer } from "native-base";
-export default class StepOne extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: (
-      <Header>
-        <Left>
-          <Button transparent onPress={() => navigation.goBack()}>
-            <Icon name="arrow-back" />
-          </Button>
-        </Left>
-        <Body>
-          <Title></Title>
-        </Body>
-        <Right />
-      </Header>
-    )
-  });
+
+import theme from "../../assets/styles-css";
+
+export default class StepOneTwo extends React.Component {
   render() {
     return (
       <Container>
+        <Header style={theme.toolbarBackground} androidStatusBarColor="#000000">
+          <Body>
+            <Title style={theme.lightColor}>Step One</Title>
+          </Body>
+        </Header>
         <Content padder>
           <Card>
             <CardItem>

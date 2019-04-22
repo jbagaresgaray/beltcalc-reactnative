@@ -5,23 +5,27 @@ import {
   createAppContainer
 } from "react-navigation";
 
-import HomeScreen from "./HomeScreen.js";
+import HomeScreen from "./HomeScreen";
 import AboutScreen from "../About/AboutScreen";
 import SettingsScreen from "../Settings/SettingsScreen";
-import MainScreenNavigator from "../ThreePulley/index.js";
-import StepOne from "../TwoPulley/index.js";
-import SideBar from "../SideBar/SideBar.js";
+import StepOneTwo from "../TwoPulley/StepOne";
+import StepTwoTwo from "../TwoPulley/StepTwo";
+import StepThreeTwo from "../TwoPulley/StepThree";
+import StepFourTwo from "../TwoPulley/StepFour";
+
+import StepOneThree from "../ThreePulley/StepOne";
+import StepTwoThree from "../ThreePulley/StepTwo";
+import StepThreeThree from "../ThreePulley/StepThree";
+
+import SideBar from "../SideBar/SideBar";
 
 const HomeScreenRouter = DrawerNavigator(
   {
     Home: {
       screen: HomeScreen
     },
-    TwoPulley: {
-      screen: StepOne
-    },
-    ThreePulley: {
-      screen: MainScreenNavigator
+    Settings: {
+      screen: SettingsScreen
     },
     About: {
       screen: AboutScreen
@@ -34,8 +38,50 @@ const HomeScreenRouter = DrawerNavigator(
 
 const AppNavigatorRouter = createStackNavigator(
   {
-    Settings: {
-      screen: SettingsScreen,
+    TwoPulley: {
+      screen: StepOneTwo,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    TwoTwoPulley: {
+      screen: StepTwoTwo,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    TwoThreePulley: {
+      screen: StepThreeTwo,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    TwoFourPulley: {
+      screen: StepFourTwo,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    ThreePulley: {
+      screen: StepOneThree,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    ThreeTwoPulley: {
+      screen: StepTwoThree,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    ThreeThreePulley: {
+      screen: StepThreeThree,
       navigationOptions: {
         header: null,
         gesturesEnabled: false

@@ -2,17 +2,11 @@ import React from "react";
 import { AppRegistry, Image, StatusBar,ImageBackground, StyleSheet } from "react-native";
 import { Container, Content, Text, List, ListItem, Icon, Header, Body,Title } from "native-base";
 
-import * as styles from "../../assets/styles-css";
+import theme from "../../assets/styles-css";
 
 const routes = [{
   title: "Home",
   icon: "home"
-},{
-  title: "Two Pulleys",
-  icon: "arrow-forward"
-},{
-  title: "Three Pulleys",
-  icon: "arrow-forward"
 },{
   title: "Settings",
   icon:"settings"
@@ -26,22 +20,22 @@ export default class SideBar extends React.Component {
   render() {
     return (
       <Container>
-        <Header style={styles.toolbarBackground} androidStatusBarColor="#000000">
+        <Header style={theme.toolbarBackground} androidStatusBarColor="#000000">
           <Body>
             <Title>&nbsp;</Title>
           </Body>
         </Header>
-        <Content style={styles.blue}>
+        <Content style={theme.blue}>
           <List
-            style={styles.lightBgColor}
+            style={theme.lightBgColor}
             dataArray={routes}
             renderRow={data => {
               return (
                 <ListItem
                   button
                   onPress={() => this.props.navigation.navigate(data.title)}>
-                  <Icon active name={data.icon} style={styles.iconStyle}/>
-                  <Text>{data.title}</Text>
+                  <Icon active name={data.icon} style={theme.iconStyle}/>
+                  <Text style={theme.marginLeft}>{data.title}</Text>
                 </ListItem>
               );
             }}

@@ -2,7 +2,7 @@ import React from "react";
 import { AppRegistry, View, StatusBar } from "react-native";
 import { Container, Body, Content, Header, Left, Right, Icon, Title, Input, Item, Label, Button, Text } from "native-base";
 import HomeScreen from "../HomeScreen";
-export default class JadeChat extends React.Component {
+export default class StepThreeThree extends React.Component {
   render() {
     const { navigate } = this.props.navigation;
     return (
@@ -16,13 +16,13 @@ export default class JadeChat extends React.Component {
             </Button>
           </Left>
           <Body>
-            <Title>Jade Chat</Title>
+            <Title>Ninesss Chat</Title>
           </Body>
           <Right />
         </Header>
         <Content padder>
           <Item floatingLabel style={{ marginTop: 20 }}>
-            <Label>Jade Chat</Label>
+            <Label>Nine Chat</Label>
             <Input />
           </Item>
           <Button rounded danger
