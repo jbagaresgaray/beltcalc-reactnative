@@ -13,8 +13,10 @@ module.exports = StyleSheet.create({
   },
   intro: {
     paddingTop: 16,
-    alignSelf: "center",
     flex: 1,
+    alignSelf: "center",
+    justifyContent: "center",
+    alignItems: "center"
   },
   introBtn: {
     width: 200,
@@ -28,7 +30,7 @@ module.exports = StyleSheet.create({
     paddingBottom: 0,
     paddingLeft: 16,
     borderRadius: 4,
-    display: "flex",
+    display: "flex"
   },
   introImg: {
     maxWidth: "100%",

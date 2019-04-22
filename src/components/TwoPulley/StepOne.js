@@ -1,46 +1,85 @@
 import React from "react";
-import { AppRegistry, Alert } from "react-native";
-import { Container, Card, CardItem, Body, Content, Header, Left, Right, Icon, Title, Button, Text,Footer } from "native-base";
+import { Image } from "react-native";
+import {
+  Container,
+  ListItem,
+  List,
+  Body,
+  Content,
+  Header,
+  Left,
+  Right,
+  Icon,
+  Title,
+  Button,
+  Text,
+  Footer,
+  FooterTab
+} from "native-base";
 
 import theme from "../../assets/styles-css";
+import styles from "./twopulley.styles";
 
 export default class StepOneTwo extends React.Component {
   render() {
+    const header = "../../assets/images/vbeltcalc-logo.png";
+    const pic1 = "../../assets/images/2p-01.png";
+
     return (
       <Container>
         <Header style={theme.toolbarBackground} androidStatusBarColor="#000000">
-          <Body>
-            <Title style={theme.lightColor}>Step One</Title>
-          </Body>
-        </Header>
-        <Content padder>
-          <Card>
-            <CardItem>
-              <Icon active name="paper-plane" />
-              <Text>Edit Screen 1</Text>
-              <Right>
-                <Icon name="close" />
-              </Right>
-            </CardItem>
-          </Card>
-          <Button full rounded primary
-            style={{ marginTop: 10 }}
-            onPress={() => this.props.navigation.navigate("StepTwo")}>
-            <Text>Next</Text>
-          </Button>
-        </Content>
-        <Footer>
-          <Left>
-            <Button transparent>
-              <Icon name='arrow-back' />
+          <Left style={{ flex: 1 }}>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon style={theme.lightColor} name="arrow-back" />
             </Button>
           </Left>
-          <Body>
-            <Title>Footer</Title>
+          <Body style={{ flex: 1 }}>
+            <Image
+              resizeMode={"cover"}
+              source={require(header)}
+              style={theme.headerLogo}
+            />
           </Body>
-          <Right>
-            <Button transparent>
-              <Icon name='menu' />
+          <Right style={{ flex: 1 }} />
+        </Header>
+        <Content>
+          <List>
+            <ListItem style={theme.cream}>
+              <Body>
+                <Text style={[theme.textOrange, theme.textCenter]}>
+                  STEP ONE
+                </Text>
+                <Text note style={[theme.textCenter, theme.textBlue]}>
+                  Adjust belt tensioner to center of travel
+                </Text>
+              </Body>
+            </ListItem>
+            <ListItem>
+              <Image
+                source={require(pic1)}
+                style={{ width: "100%", height: 200 }}
+              />
+            </ListItem>
+          </List>
+        </Content>
+        <Footer
+          style={[
+            theme.toolbarBackground,
+            theme.paddingLeft,
+            theme.paddingRight
+          ]}
+        >
+          <Left style={{ flex: 1 }}>
+            <Button warning small onPress={() => this.props.navigation.goBack()}>
+              <Text>Previous</Text>
+            </Button>
+          </Left>
+          <Body style={{ flex: 1 }}>
+            <Title>&nbsp;</Title>
+          </Body>
+          <Right style={{ flex: 1 }}>
+            <Button warning small onPress={() => this.props.navigation.push("TwoTwoPulley")}>
+              <Text>Next</Text>
             </Button>
           </Right>
         </Footer>

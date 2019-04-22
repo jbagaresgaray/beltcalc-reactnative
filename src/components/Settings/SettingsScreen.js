@@ -12,7 +12,8 @@ import {
   Text,
   ListItem,
   Switch,
-  Radio
+  Radio,
+  List
 } from "native-base";
 
 import theme from "../../assets/styles-css";
@@ -69,22 +70,24 @@ export default class SettingsScreen extends React.Component {
           >
             Choose the default measuring units
           </Text>
-          <ListItem style={styles.settingsList}>
-            <Body>
-              <Text>Metric Units</Text>
-            </Body>
-            <Right>
-              <Radio selected={false} />
-            </Right>
-          </ListItem>
-          <ListItem style={styles.settingsList}>
-            <Body>
-              <Text>Standard Units</Text>
-            </Body>
-            <Right>
-              <Radio selected={true} />
-            </Right>
-          </ListItem>
+          <List>
+            <ListItem style={styles.settingsList}>
+              <Body>
+                <Text>Metric Units</Text>
+              </Body>
+              <Right>
+                <Radio selected={false} />
+              </Right>
+            </ListItem>
+            <ListItem style={styles.settingsList}>
+              <Body>
+                <Text>Standard Units</Text>
+              </Body>
+              <Right>
+                <Radio selected={true} />
+              </Right>
+            </ListItem>
+          </List>
         </Content>
       </Container>
     );

@@ -12,15 +12,15 @@ module.exports = StyleSheet.create({
     width: 200,
     resizeMode: "contain",
     alignSelf: "center",
-    flex: 1,
+    flex: 1
   },
-  alignSelfCenter:{
+  alignSelfCenter: {
     alignSelf: "center"
   },
-  alignContentCenter:{
+  alignContentCenter: {
     alignContent: "center"
   },
-  alignItemsCenter:{
+  alignItemsCenter: {
     alignItems: "center"
   },
   textCenter: {
@@ -75,8 +75,21 @@ module.exports = StyleSheet.create({
     backgroundColor: "#f3f3f3",
     color: "#0d2643"
   },
+  textCream: {
+    color: "#f3f3f3"
+  },
   blue: {
     backgroundColor: "#0d2643",
     color: "#f3f3f3"
+  },
+  textBlue: {
+    color: "#0d2643"
+  },
+  orange: {
+    backgroundColor: "#b24826",
+    color: "#fff"
+  },
+  textOrange: {
+    color: "#b24826"
   }
 });

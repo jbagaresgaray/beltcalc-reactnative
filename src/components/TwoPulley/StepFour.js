@@ -1,46 +1,114 @@
 import React from "react";
-import { AppRegistry, Alert } from "react-native";
-import { Container, Header, Left, Body, Title, Card, CardItem, Content, Right, Icon, Button, Text } from "native-base";
-import { StackNavigator } from "react-navigation";
+import { Image } from "react-native";
+import {
+  Container,
+  ListItem,
+  List,
+  Body,
+  Content,
+  Header,
+  Left,
+  Right,
+  Icon,
+  Title,
+  Button,
+  Text,
+  Footer,
+  Form,
+  Item,
+  Input,
+  Label
+} from "native-base";
+
+import theme from "../../assets/styles-css";
+import styles from "./twopulley.styles";
+
 export default class StepFourTwo extends React.Component {
-  componentDidMount() {
-    Alert.alert("No Users Found", "Oops, Looks like you are not signed in");
-  }
   render() {
+    const header = "../../assets/images/vbeltcalc-logo.png";
+    const pic1 = "../../assets/images/2p-04.png";
+
     return (
       <Container>
-        <Content padder>
-          <Card>
-            <CardItem>
-              <Icon active name="paper-plane" />
-              <Text>Show User profiles here</Text>
+        <Header style={theme.toolbarBackground} androidStatusBarColor="#000000">
+          <Left style={{ flex: 1 }}>
+            <Button transparent onPress={() => this.props.navigation.goBack()}>
+              <Icon style={theme.lightColor} name="arrow-back" />
+            </Button>
+          </Left>
+          <Body style={{ flex: 1 }}>
+            <Image
+              resizeMode={"cover"}
+              source={require(header)}
+              style={theme.headerLogo}
+            />
+          </Body>
+          <Right style={{ flex: 1 }} />
+        </Header>
+        <Content>
+          <List>
+            <ListItem style={theme.cream}>
+              <Body>
+                <Text style={[theme.textOrange, theme.textCenter]}>
+                  STEP FOUR
+                </Text>
+                <Text note style={[theme.textCenter, theme.textBlue]}>
+                  Measure pulley B's outside diameter
+                </Text>
+              </Body>
+            </ListItem>
+            <ListItem>
+              <Image
+                source={require(pic1)}
+                style={{ width: "100%", height: 200 }}
+              />
+            </ListItem>
+            <ListItem itemDivider style={theme.cream}>
+              <Text small>B's Outside Diameter</Text>
+            </ListItem>
+          </List>
+          <Form>
+            <Item inlineLabel>
+              <Label>Value:</Label>
+              <Input placeholder="0" keyboardType="numeric" />
               <Right>
-                <Icon name="close" />
+                <Text note style={theme.paddingRight}>
+                  in.
+                </Text>
               </Right>
-            </CardItem>
-          </Card>
-          <Button full rounded primary
-            style={{ marginTop: 10 }}
-            onPress={() => this.props.navigation.navigate("EditScreenOne")}>
-            <Text>Goto EditScreen One</Text>
-          </Button>
+            </Item>
+          </Form>
         </Content>
+        <Footer
+          style={[
+            theme.toolbarBackground,
+            theme.paddingLeft,
+            theme.paddingRight
+          ]}
+        >
+          <Left style={{ flex: 1 }}>
+            <Button
+              warning
+              small
+              onPress={() => this.props.navigation.goBack()}
+            >
+              <Text>Previous</Text>
+            </Button>
+          </Left>
+          <Body style={{ flex: 1 }}>
+            <Title>&nbsp;</Title>
+          </Body>
+          <Right style={{ flex: 1 }}>
+            <Button
+              warning
+              small
+              onPress={() => this.props.navigation.push("TwoComputePulley")}
+            >
+              <Text>Next</Text>
+            </Button>
+          </Right>
+        </Footer>
       </Container>
     );
   }
 }
-StepFourTwo.navigationOptions = ({ navigation }) => ({
-  header: (
-    <Header>
-      <Left>
-        <Button transparent onPress={() => navigation.openDrawer()}>
-          <Icon name="menu" />
-        </Button>
-      </Left>
-      <Body>
-        <Title>StepFour</Title>
-      </Body>
-      <Right />
-    </Header>
-  )
-});

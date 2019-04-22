@@ -12,6 +12,7 @@ import StepOneTwo from "../TwoPulley/StepOne";
 import StepTwoTwo from "../TwoPulley/StepTwo";
 import StepThreeTwo from "../TwoPulley/StepThree";
 import StepFourTwo from "../TwoPulley/StepFour";
+import StepTwoCompute from "../TwoPulley/StepCompute";
 
 import StepOneThree from "../ThreePulley/StepOne";
 import StepTwoThree from "../ThreePulley/StepTwo";
@@ -61,6 +62,13 @@ const AppNavigatorRouter = createStackNavigator(
     },
     TwoFourPulley: {
       screen: StepFourTwo,
+      navigationOptions: {
+        header: null,
+        gesturesEnabled: false
+      }
+    },
+    TwoComputePulley: {
+      screen: StepTwoCompute,
       navigationOptions: {
         header: null,
         gesturesEnabled: false
