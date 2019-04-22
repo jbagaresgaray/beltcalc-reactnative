@@ -21,12 +21,12 @@ import {
 } from "native-base";
 
 import theme from "../../assets/styles-css";
-import styles from "./twopulley.styles";
+import styles from "./threepulley.styles";
 
-export default class StepThreeTwo extends React.Component {
+export default class StepSixThree extends React.Component {
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/2p-03.png";
+    const pic1 = "../../assets/images/3p-06.png";
 
     return (
       <Container>
@@ -50,10 +50,10 @@ export default class StepThreeTwo extends React.Component {
             <ListItem style={theme.cream}>
               <Body>
                 <Text style={[theme.textOrange, theme.textCenter]}>
-                  STEP THREE
+                  STEP SIX
                 </Text>
                 <Text note style={[theme.textCenter, theme.textBlue]}>
-                  Measure pulley A's outside diameter
+                  Measure pulley B’s outside diameter
                 </Text>
               </Body>
             </ListItem>
@@ -65,20 +65,22 @@ export default class StepThreeTwo extends React.Component {
               />
             </ListItem>
             <ListItem itemDivider style={theme.cream}>
-              <Text note>A's Outside Diameter</Text>
+              <Text style={[theme.textBlue, theme.textCenter]} note>
+                Pully B's Outside Diameter
+              </Text>
             </ListItem>
+            <Form>
+              <Item inlineLabel>
+                <Label>Value:</Label>
+                <Input placeholder="0" keyboardType="numeric" />
+                <Right>
+                  <Text note style={theme.paddingRight}>
+                    in.
+                  </Text>
+                </Right>
+              </Item>
+            </Form>
           </List>
-          <Form>
-            <Item inlineLabel>
-              <Label>Value:</Label>
-              <Input placeholder="0" keyboardType="numeric" />
-              <Right>
-                <Text note style={theme.paddingRight}>
-                  in.
-                </Text>
-              </Right>
-            </Item>
-          </Form>
         </Content>
         <Footer
           style={[
@@ -103,7 +105,7 @@ export default class StepThreeTwo extends React.Component {
             <Button
               warning
               small
-              onPress={() => this.props.navigation.push("TwoFourPulley")}
+              onPress={() => this.props.navigation.push("ThreeSevenPulley")}
             >
               <Text>Next</Text>
             </Button>

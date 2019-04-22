@@ -35,6 +35,9 @@ module.exports = StyleSheet.create({
   textJustify: {
     textAlign: "justify"
   },
+  textSmall:{
+    // fontSize: "75%"
+  },
   margin: {
     margin: 16
   },

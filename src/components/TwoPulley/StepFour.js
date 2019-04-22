@@ -59,12 +59,13 @@ export default class StepFourTwo extends React.Component {
             </ListItem>
             <ListItem>
               <Image
+                resizeMode="contain"
                 source={require(pic1)}
                 style={{ width: "100%", height: 200 }}
               />
             </ListItem>
             <ListItem itemDivider style={theme.cream}>
-              <Text small>B's Outside Diameter</Text>
+              <Text note>B's Outside Diameter</Text>
             </ListItem>
           </List>
           <Form>

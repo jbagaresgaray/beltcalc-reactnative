@@ -14,7 +14,10 @@ import {
   Button,
   Text,
   Footer,
-  FooterTab
+  Form,
+  Item,
+  Input,
+  Label
 } from "native-base";
 
 import theme from "../../assets/styles-css";
@@ -56,6 +59,7 @@ export default class StepOneTwo extends React.Component {
             </ListItem>
             <ListItem>
               <Image
+                resizeMode="contain"
                 source={require(pic1)}
                 style={{ width: "100%", height: 200 }}
               />
@@ -70,7 +74,11 @@ export default class StepOneTwo extends React.Component {
           ]}
         >
           <Left style={{ flex: 1 }}>
-            <Button warning small onPress={() => this.props.navigation.goBack()}>
+            <Button
+              warning
+              small
+              onPress={() => this.props.navigation.goBack()}
+            >
               <Text>Previous</Text>
             </Button>
           </Left>
@@ -78,7 +86,11 @@ export default class StepOneTwo extends React.Component {
             <Title>&nbsp;</Title>
           </Body>
           <Right style={{ flex: 1 }}>
-            <Button warning small onPress={() => this.props.navigation.push("TwoTwoPulley")}>
+            <Button
+              warning
+              small
+              onPress={() => this.props.navigation.push("TwoTwoPulley")}
+            >
               <Text>Next</Text>
             </Button>
           </Right>

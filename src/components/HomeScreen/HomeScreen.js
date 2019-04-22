@@ -33,13 +33,13 @@ export default class HomeScreen extends React.Component {
           <Button full light
             style={styles.introBtn}
             onPress={() => this.props.navigation.push("TwoPulley")}>
-            <Image source={require(pic1)} style={styles.introImg}/>
+            <Image resizeMode="contain" source={require(pic1)} style={styles.introImg}/>
             <Text style={styles.introText}>TWO PULLEYS</Text>
           </Button>
           <Button full light
             style={styles.introBtn}
             onPress={() => this.props.navigation.push("ThreePulley")}>
-            <Image source={require(pic2)} style={styles.introImg}/>
+            <Image resizeMode="contain" source={require(pic2)} style={styles.introImg}/>
             <Text style={styles.introText}>THREE PULLEYS</Text>
           </Button>
         </View>

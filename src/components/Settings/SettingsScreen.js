@@ -15,11 +15,35 @@ import {
   Radio,
   List
 } from "native-base";
+import { setLocalStorage } from "../../services/storage";
 
 import theme from "../../assets/styles-css";
 import styles from "./settings.style";
 
 export default class SettingsScreen extends React.Component {
+  state = {
+    toggleModel: false,
+    activeUnit: "metric"
+  };
+
+  toggleOption(value) {
+    console.log("activeUnit: ", value);
+    this.setState({ activeUnit: value });
+    setLocalStorage("isMeasure", this.state.activeUnit);
+  }
+
+  toggleMode(value) {
+    console.log("toggleModel: ", value);
+    this.setState({ toggleModel: value });
+    setLocalStorage("isResult", this.state.toggleModel.toString());
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+    setLocalStorage("isResult", this.state.toggleModel.toString());
+    setLocalStorage("isMeasure", this.state.activeUnit);
+  }
+
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
 
@@ -56,7 +80,11 @@ export default class SettingsScreen extends React.Component {
               <Text>Step by Step Calculation</Text>
             </Body>
             <Right>
-              <Switch value={false} />
+              <Switch
+                onValueChange={value => this.toggleMode(value)}
+                value={this.state.toggleModel}
+                trackColor={{ true: "#0d2643", false: "#f3f3f3" }}
+              />
             </Right>
           </ListItem>
           <Text
@@ -71,20 +99,34 @@ export default class SettingsScreen extends React.Component {
             Choose the default measuring units
           </Text>
           <List>
-            <ListItem style={styles.settingsList}>
+            <ListItem
+              style={styles.settingsList}
+              selected={"metric" === this.state.activeUnit}
+              onPress={() => this.toggleOption("metric")}
+            >
               <Body>
                 <Text>Metric Units</Text>
               </Body>
               <Right>
-                <Radio selected={false} />
+                <Radio
+                  onPress={() => this.toggleOption("metric")}
+                  selected={"metric" === this.state.activeUnit}
+                />
               </Right>
             </ListItem>
-            <ListItem style={styles.settingsList}>
+            <ListItem
+              style={styles.settingsList}
+              selected={"standard" === this.state.activeUnit}
+              onPress={() => this.toggleOption("standard")}
+            >
               <Body>
                 <Text>Standard Units</Text>
               </Body>
               <Right>
-                <Radio selected={true} />
+                <Radio
+                  onPress={() => this.toggleOption("standard")}
+                  selected={"standard" === this.state.activeUnit}
+                />
               </Right>
             </ListItem>
           </List>

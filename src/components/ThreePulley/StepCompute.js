@@ -21,12 +21,12 @@ import {
 } from "native-base";
 
 import theme from "../../assets/styles-css";
-import styles from "./twopulley.styles";
+import styles from "./threepulley.styles";
 
-export default class StepTwoCompute extends React.Component {
+export default class StepThreeCompute extends React.Component {
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/2p-05.png";
+    const pic1 = "../../assets/images/3p-08.png";
 
     return (
       <Container>
@@ -58,7 +58,7 @@ export default class StepTwoCompute extends React.Component {
               <ListItem style={theme.cream}>
                 <Body>
                   <Text style={[theme.textOrange, theme.textCenter]}>
-                    STEP FIVE
+                    STEP EIGHT
                   </Text>
                   <Text style={[theme.textOrange, theme.textCenter]}>
                     (Calculated Size)
@@ -77,7 +77,7 @@ export default class StepTwoCompute extends React.Component {
                 />
               </ListItem>
               <ListItem itemDivider style={theme.cream}>
-                <Text small>Distance Between Pulleys</Text>
+                <Text note>Distance Between Pulley A and Pulley B</Text>
               </ListItem>
               <Item inlineLabel style={theme.paddingLeft}>
                 <Label>Value:</Label>
@@ -89,7 +89,7 @@ export default class StepTwoCompute extends React.Component {
                 </Right>
               </Item>
               <ListItem itemDivider style={theme.cream}>
-                <Text small>A's Outside Diameter</Text>
+                <Text note>Distance Between Pulley B and Pulley C</Text>
               </ListItem>
               <Item inlineLabel style={theme.paddingLeft}>
                 <Label>Value:</Label>
@@ -101,7 +101,7 @@ export default class StepTwoCompute extends React.Component {
                 </Right>
               </Item>
               <ListItem itemDivider style={theme.cream}>
-                <Text small>B's Outside Diameter</Text>
+                <Text note>Distance Between Pulley C and Pulley A</Text>
               </ListItem>
               <Item inlineLabel style={theme.paddingLeft}>
                 <Label>Value:</Label>
@@ -113,7 +113,43 @@ export default class StepTwoCompute extends React.Component {
                 </Right>
               </Item>
               <ListItem itemDivider style={theme.cream}>
-                <Text small>Belt Length</Text>
+                <Text note>Pulley A's Outside Diameter</Text>
+              </ListItem>
+              <Item inlineLabel style={theme.paddingLeft}>
+                <Label>Value:</Label>
+                <Input placeholder="0" keyboardType="numeric" />
+                <Right>
+                  <Text note style={theme.paddingRight}>
+                    in.
+                  </Text>
+                </Right>
+              </Item>
+              <ListItem itemDivider style={theme.cream}>
+                <Text note>Pulley B's Outside Diameter</Text>
+              </ListItem>
+              <Item inlineLabel style={theme.paddingLeft}>
+                <Label>Value:</Label>
+                <Input placeholder="0" keyboardType="numeric" />
+                <Right>
+                  <Text note style={theme.paddingRight}>
+                    in.
+                  </Text>
+                </Right>
+              </Item>
+              <ListItem itemDivider style={theme.cream}>
+                <Text note>Pulley C's Outside Diameter</Text>
+              </ListItem>
+              <Item inlineLabel style={theme.paddingLeft}>
+                <Label>Value:</Label>
+                <Input placeholder="0" keyboardType="numeric" />
+                <Right>
+                  <Text note style={theme.paddingRight}>
+                    in.
+                  </Text>
+                </Right>
+              </Item>
+              <ListItem itemDivider style={theme.cream}>
+                <Text note>Belt Length</Text>
               </ListItem>
               <Item inlineLabel style={theme.paddingLeft}>
                 <Label>Value:</Label>
