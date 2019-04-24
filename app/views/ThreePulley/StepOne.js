@@ -23,10 +23,10 @@ import {
 import theme from "../../assets/styles-css";
 import styles from "./threepulley.styles";
 
-export default class StepFiveThree extends React.Component {
+export default class StepOneThree extends React.Component {
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/3p-05.png";
+    const pic1 = "../../assets/images/3p-01.png";
 
     return (
       <Container>
@@ -50,10 +50,10 @@ export default class StepFiveThree extends React.Component {
             <ListItem style={theme.cream}>
               <Body>
                 <Text style={[theme.textOrange, theme.textCenter]}>
-                  STEP FIVE
+                  STEP ONE
                 </Text>
                 <Text note style={[theme.textCenter, theme.textBlue]}>
-                  Measure pulley A's outside diameter.
+                  Adjust belt tensioner to center of travel
                 </Text>
               </Body>
             </ListItem>
@@ -64,22 +64,6 @@ export default class StepFiveThree extends React.Component {
                 style={{ width: "100%", height: 200 }}
               />
             </ListItem>
-            <ListItem itemDivider style={theme.cream}>
-              <Text style={[theme.textBlue, theme.textCenter]} note>
-                Pully A's Outside Diameter
-              </Text>
-            </ListItem>
-            <Form>
-              <Item inlineLabel>
-                <Label>Value:</Label>
-                <Input placeholder="0" keyboardType="numeric" />
-                <Right>
-                  <Text note style={theme.paddingRight}>
-                    in.
-                  </Text>
-                </Right>
-              </Item>
-            </Form>
           </List>
         </Content>
         <Footer
@@ -91,7 +75,7 @@ export default class StepFiveThree extends React.Component {
         >
           <Left style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
               onPress={() => this.props.navigation.goBack()}
             >
@@ -103,9 +87,9 @@ export default class StepFiveThree extends React.Component {
           </Body>
           <Right style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
-              onPress={() => this.props.navigation.push("ThreeSixPulley")}
+              onPress={() => this.props.navigation.push("ThreeTwoPulley")}
             >
               <Text>Next</Text>
             </Button>

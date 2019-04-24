@@ -1,25 +1,25 @@
 import React from "react";
 import { DrawerNavigator, createStackNavigator } from "react-navigation";
 
-import HomeScreen from "./HomeScreen";
-import AboutScreen from "../About/AboutScreen";
-import SettingsScreen from "../Settings/SettingsScreen";
-import StepOneTwo from "../TwoPulley/StepOne";
-import StepTwoTwo from "../TwoPulley/StepTwo";
-import StepThreeTwo from "../TwoPulley/StepThree";
-import StepFourTwo from "../TwoPulley/StepFour";
-import StepTwoCompute from "../TwoPulley/StepCompute";
+import HomeScreen from "./HomeScreen/HomeScreen";
+import AboutScreen from "./About/AboutScreen";
+import SettingsScreen from "./Settings/SettingsScreen";
+import StepOneTwo from "./TwoPulley/StepOne";
+import StepTwoTwo from "./TwoPulley/StepTwo";
+import StepThreeTwo from "./TwoPulley/StepThree";
+import StepFourTwo from "./TwoPulley/StepFour";
+import StepTwoCompute from "./TwoPulley/StepCompute";
 
-import StepOneThree from "../ThreePulley/StepOne";
-import StepTwoThree from "../ThreePulley/StepTwo";
-import StepThreeThree from "../ThreePulley/StepThree";
-import StepFourThree from "../ThreePulley/StepFour";
-import StepFiveThree from "../ThreePulley/StepFive";
-import StepSixThree from "../ThreePulley/StepSix";
-import StepSevenThree from "../ThreePulley/StepSeven";
-import StepThreeCompute from "../ThreePulley/StepCompute";
+import StepOneThree from "./ThreePulley/StepOne";
+import StepTwoThree from "./ThreePulley/StepTwo";
+import StepThreeThree from "./ThreePulley/StepThree";
+import StepFourThree from "./ThreePulley/StepFour";
+import StepFiveThree from "./ThreePulley/StepFive";
+import StepSixThree from "./ThreePulley/StepSix";
+import StepSevenThree from "./ThreePulley/StepSeven";
+import StepThreeCompute from "./ThreePulley/StepCompute";
 
-import SideBar from "../SideBar/SideBar";
+import SideBar from "./SideBar/SideBar";
 
 const HomeScreenRouter = DrawerNavigator(
   {

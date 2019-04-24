@@ -19,14 +19,13 @@ import {
   Input,
   Label
 } from "native-base";
-
 import theme from "../../assets/styles-css";
-import styles from "./threepulley.styles";
+import styles from "./twopulley.styles";
 
-export default class StepThreeThree extends React.Component {
+export default class StepOneTwo extends React.Component {
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/3p-03.png";
+    const pic1 = "../../assets/images/2p-01.png";
 
     return (
       <Container>
@@ -50,10 +49,10 @@ export default class StepThreeThree extends React.Component {
             <ListItem style={theme.cream}>
               <Body>
                 <Text style={[theme.textOrange, theme.textCenter]}>
-                  STEP THREE
+                  STEP ONE
                 </Text>
                 <Text note style={[theme.textCenter, theme.textBlue]}>
-                  Measure center-to-center distance between B & C pulley shafts
+                  Adjust belt tensioner to center of travel
                 </Text>
               </Body>
             </ListItem>
@@ -64,22 +63,6 @@ export default class StepThreeThree extends React.Component {
                 style={{ width: "100%", height: 200 }}
               />
             </ListItem>
-            <ListItem itemDivider style={theme.cream}>
-              <Text style={[theme.textBlue, theme.textCenter]} note>
-                Distance Between Pulley B and Pulley C
-              </Text>
-            </ListItem>
-            <Form>
-              <Item inlineLabel>
-                <Label>Value:</Label>
-                <Input placeholder="0" keyboardType="numeric" />
-                <Right>
-                  <Text note style={theme.paddingRight}>
-                    in.
-                  </Text>
-                </Right>
-              </Item>
-            </Form>
           </List>
         </Content>
         <Footer
@@ -91,7 +74,7 @@ export default class StepThreeThree extends React.Component {
         >
           <Left style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
               onPress={() => this.props.navigation.goBack()}
             >
@@ -103,9 +86,9 @@ export default class StepThreeThree extends React.Component {
           </Body>
           <Right style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
-              onPress={() => this.props.navigation.push("ThreeFourPulley")}
+              onPress={() => this.props.navigation.push("TwoTwoPulley")}
             >
               <Text>Next</Text>
             </Button>

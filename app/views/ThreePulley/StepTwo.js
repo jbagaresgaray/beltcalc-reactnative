@@ -19,14 +19,45 @@ import {
   Input,
   Label
 } from "native-base";
+import { setLocalStorage, getLocalStorage } from "../../services/storage";
 
 import theme from "../../assets/styles-css";
-import styles from "./twopulley.styles";
+import styles from "./threepulley.styles";
 
-export default class StepTwoTwo extends React.Component {
+export default class StepTwoThree extends React.Component {
+  state = {
+    pulleyCenter1: 0,
+    measuringUnits: ""
+  };
+
+  omponentDidMount() {
+    getLocalStorage("pulleyCenter1").then(val => {
+      console.log("pulleyCenter1: ", val);
+      if (val) {
+        this.setState({ pulleyCenter1: val });
+      }
+    });
+
+    getLocalStorage("isMeasure").then(val => {
+      console.log("measuringUnits: ", val);
+      this.setState({ measuringUnits: val });
+    });
+  }
+
+  pulleyCenterChange1(value) {
+    this.setState({ pulleyCenter1: value });
+  }
+
+  nextPage() {
+    setLocalStorage("pulleyCenter1", this.state.pulleyCenter1);
+    this.props.navigation.push("ThreeThreePulley");
+  }
+
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/2p-02.png";
+    const pic1 = "../../assets/images/3p-02.png";
+    const measuringUnits =
+      this.state.measuringUnits === "standard" ? "in." : "cm.";
 
     return (
       <Container>
@@ -53,7 +84,7 @@ export default class StepTwoTwo extends React.Component {
                   STEP TWO
                 </Text>
                 <Text note style={[theme.textCenter, theme.textBlue]}>
-                  Measure center-to-center distance between pulley shafts
+                  Measure center-to-center distance between A & B pulley shafts
                 </Text>
               </Body>
             </ListItem>
@@ -65,20 +96,29 @@ export default class StepTwoTwo extends React.Component {
               />
             </ListItem>
             <ListItem itemDivider style={theme.cream}>
-              <Text note>Distance Between Pulleys</Text>
+              <Text style={[theme.textBlue, theme.textCenter]} note>
+                Distance Between Pulley A and Pulley B
+              </Text>
             </ListItem>
+            <Form>
+              <Item inlineLabel>
+                <Label>Value:</Label>
+                <Input
+                  placeholder="0"
+                  keyboardType="numeric"
+                  value={`${this.state.pulleyCenter1}`}
+                  onChangeText={inputValue =>
+                    this.pulleyCenterChange1(inputValue)
+                  }
+                />
+                <Right>
+                  <Text note style={theme.paddingRight}>
+                    {measuringUnits}
+                  </Text>
+                </Right>
+              </Item>
+            </Form>
           </List>
-          <Form>
-            <Item inlineLabel>
-              <Label>Value:</Label>
-              <Input placeholder="0" keyboardType="numeric"/>
-              <Right>
-                <Text note style={theme.paddingRight}>
-                  in.
-                </Text>
-              </Right>
-            </Item>
-          </Form>
         </Content>
         <Footer
           style={[
@@ -89,7 +129,7 @@ export default class StepTwoTwo extends React.Component {
         >
           <Left style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
               onPress={() => this.props.navigation.goBack()}
             >
@@ -101,9 +141,9 @@ export default class StepTwoTwo extends React.Component {
           </Body>
           <Right style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
-              onPress={() => this.props.navigation.push("TwoThreePulley")}
+              onPress={() => this.nextPage()}
             >
               <Text>Next</Text>
             </Button>

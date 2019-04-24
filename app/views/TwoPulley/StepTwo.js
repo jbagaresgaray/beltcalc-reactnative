@@ -19,14 +19,45 @@ import {
   Input,
   Label
 } from "native-base";
+import { setLocalStorage, getLocalStorage } from "../../services/storage";
 
 import theme from "../../assets/styles-css";
-import styles from "./threepulley.styles";
+import styles from "./twopulley.styles";
 
-export default class StepFourThree extends React.Component {
+export default class StepTwoTwo extends React.Component {
+  state = {
+    pulleyCenter: 0,
+    measuringUnits: ""
+  };
+
+  componentDidMount() {
+    getLocalStorage("pulleyCenter").then(val => {
+      console.log("pulleyCenter: ", val);
+      if (val) {
+        this.setState({ pulleyCenter: val });
+      }
+    });
+
+    getLocalStorage("isMeasure").then(val => {
+      console.log("measuringUnits: ", val);
+      this.setState({ measuringUnits: val });
+    });
+  }
+
+  pulleyCenterChange(value) {
+    this.setState({ pulleyCenter: value });
+  }
+
+  nextPage() {
+    setLocalStorage("pulleyCenter", this.state.pulleyCenter);
+    this.props.navigation.push("TwoThreePulley");
+  }
+
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/3p-04.png";
+    const pic1 = "../../assets/images/2p-02.png";
+    const measuringUnits =
+      this.state.measuringUnits === "standard" ? "in." : "cm.";
 
     return (
       <Container>
@@ -50,10 +81,10 @@ export default class StepFourThree extends React.Component {
             <ListItem style={theme.cream}>
               <Body>
                 <Text style={[theme.textOrange, theme.textCenter]}>
-                  STEP FOUR
+                  STEP TWO
                 </Text>
                 <Text note style={[theme.textCenter, theme.textBlue]}>
-                  Measure center-to-center distance between A & C pulley shafts
+                  Measure center-to-center distance between pulley shafts
                 </Text>
               </Body>
             </ListItem>
@@ -65,22 +96,25 @@ export default class StepFourThree extends React.Component {
               />
             </ListItem>
             <ListItem itemDivider style={theme.cream}>
-              <Text style={[theme.textBlue, theme.textCenter]} note>
-                Distance Between Pulley C and Pulley A
-              </Text>
+              <Text note>Distance Between Pulleys</Text>
             </ListItem>
-            <Form>
-              <Item inlineLabel>
-                <Label>Value:</Label>
-                <Input placeholder="0" keyboardType="numeric" />
-                <Right>
-                  <Text note style={theme.paddingRight}>
-                    in.
-                  </Text>
-                </Right>
-              </Item>
-            </Form>
           </List>
+          <Form>
+            <Item inlineLabel>
+              <Label>Value:</Label>
+              <Input
+                placeholder="0"
+                keyboardType="numeric"
+                value={`${this.state.pulleyCenter}`}
+                onChangeText={inputValue => this.pulleyCenterChange(inputValue)}
+              />
+              <Right>
+                <Text note style={theme.paddingRight}>
+                  {measuringUnits}
+                </Text>
+              </Right>
+            </Item>
+          </Form>
         </Content>
         <Footer
           style={[
@@ -91,7 +125,7 @@ export default class StepFourThree extends React.Component {
         >
           <Left style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
               onPress={() => this.props.navigation.goBack()}
             >
@@ -103,9 +137,9 @@ export default class StepFourThree extends React.Component {
           </Body>
           <Right style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
-              onPress={() => this.props.navigation.push("ThreeFivePulley")}
+              onPress={() => this.nextPage()}
             >
               <Text>Next</Text>
             </Button>

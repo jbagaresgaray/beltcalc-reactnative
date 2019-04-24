@@ -15,7 +15,7 @@ import {
   Radio,
   List
 } from "native-base";
-import { setLocalStorage } from "../../services/storage";
+import { setLocalStorage, getLocalStorage } from "../../services/storage";
 
 import theme from "../../assets/styles-css";
 import styles from "./settings.style";
@@ -35,13 +35,18 @@ export default class SettingsScreen extends React.Component {
   toggleMode(value) {
     console.log("toggleModel: ", value);
     this.setState({ toggleModel: value });
-    setLocalStorage("isResult", this.state.toggleModel.toString());
+    const isResult = value === true ? "step" : "result";
+    setLocalStorage("isResult", isResult);
   }
 
   componentDidMount() {
     console.log("componentDidMount");
-    setLocalStorage("isResult", this.state.toggleModel.toString());
-    setLocalStorage("isMeasure", this.state.activeUnit);
+    getLocalStorage("isResult").then(val => {
+      this.setState({ toggleModel: val === "step" ? true : false });
+    });
+    getLocalStorage("isMeasure").then(val => {
+      this.setState({ activeUnit: val });
+    });
   }
 
   render() {

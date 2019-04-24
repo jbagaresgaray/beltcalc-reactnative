@@ -19,14 +19,45 @@ import {
   Input,
   Label
 } from "native-base";
+import { setLocalStorage, getLocalStorage } from "../../services/storage";
 
 import theme from "../../assets/styles-css";
 import styles from "./twopulley.styles";
 
-export default class StepThreeTwo extends React.Component {
+export default class StepFourTwo extends React.Component {
+  state = {
+    smallDiameter: 0,
+    measuringUnits: ""
+  };
+
+  componentDidMount() {
+    getLocalStorage("smallDiameter").then(val => {
+      console.log("smallDiameter: ", val);
+      if (val) {
+        this.setState({ smallDiameter: val });
+      }
+    });
+
+    getLocalStorage("isMeasure").then(val => {
+      console.log("measuringUnits: ", val);
+      this.setState({ measuringUnits: val });
+    });
+  }
+
+  smallDiameterChange(value) {
+    this.setState({ smallDiameter: value });
+  }
+
+  nextPage() {
+    setLocalStorage("smallDiameter", this.state.smallDiameter);
+    this.props.navigation.push("TwoComputePulley");
+  }
+
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/2p-03.png";
+    const pic1 = "../../assets/images/2p-04.png";
+    const measuringUnits =
+      this.state.measuringUnits === "standard" ? "in." : "cm.";
 
     return (
       <Container>
@@ -50,10 +81,10 @@ export default class StepThreeTwo extends React.Component {
             <ListItem style={theme.cream}>
               <Body>
                 <Text style={[theme.textOrange, theme.textCenter]}>
-                  STEP THREE
+                  STEP FOUR
                 </Text>
                 <Text note style={[theme.textCenter, theme.textBlue]}>
-                  Measure pulley A's outside diameter
+                  Measure pulley B's outside diameter
                 </Text>
               </Body>
             </ListItem>
@@ -65,16 +96,23 @@ export default class StepThreeTwo extends React.Component {
               />
             </ListItem>
             <ListItem itemDivider style={theme.cream}>
-              <Text note>A's Outside Diameter</Text>
+              <Text note>B's Outside Diameter</Text>
             </ListItem>
           </List>
           <Form>
             <Item inlineLabel>
               <Label>Value:</Label>
-              <Input placeholder="0" keyboardType="numeric" />
+              <Input
+                placeholder="0"
+                keyboardType="numeric"
+                value={`${this.state.smallDiameter}`}
+                onChangeText={inputValue =>
+                  this.smallDiameterChange(inputValue)
+                }
+              />
               <Right>
                 <Text note style={theme.paddingRight}>
-                  in.
+                  {measuringUnits}
                 </Text>
               </Right>
             </Item>
@@ -89,7 +127,7 @@ export default class StepThreeTwo extends React.Component {
         >
           <Left style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
               onPress={() => this.props.navigation.goBack()}
             >
@@ -101,9 +139,9 @@ export default class StepThreeTwo extends React.Component {
           </Body>
           <Right style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
-              onPress={() => this.props.navigation.push("TwoFourPulley")}
+              onPress={() => this.nextPage()}
             >
               <Text>Next</Text>
             </Button>

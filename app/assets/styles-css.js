@@ -35,7 +35,7 @@ module.exports = StyleSheet.create({
   textJustify: {
     textAlign: "justify"
   },
-  textSmall:{
+  textSmall: {
     // fontSize: "75%"
   },
   margin: {
@@ -94,5 +94,10 @@ module.exports = StyleSheet.create({
   },
   textOrange: {
     color: "#b24826"
+  },
+  footerBtn: {
+    borderColor: "#0a1f38",
+    backgroundColor: "#b24826",
+    color: "#fff"
   }
 });

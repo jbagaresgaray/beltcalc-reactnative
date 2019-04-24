@@ -19,14 +19,45 @@ import {
   Input,
   Label
 } from "native-base";
+import { setLocalStorage, getLocalStorage } from "../../services/storage";
 
 import theme from "../../assets/styles-css";
-import styles from "./twopulley.styles";
+import styles from "./threepulley.styles";
 
-export default class StepOneTwo extends React.Component {
+export default class StepSevenThree extends React.Component {
+  state = {
+    smallDiameter: 0,
+    measuringUnits: ""
+  };
+
+  componentDidMount() {
+    getLocalStorage("smallDiameter").then(val => {
+      console.log("smallDiameter: ", val);
+      if (val) {
+        this.setState({ smallDiameter: val });
+      }
+    });
+
+    getLocalStorage("isMeasure").then(val => {
+      console.log("measuringUnits: ", val);
+      this.setState({ measuringUnits: val });
+    });
+  }
+
+  smallDiameterChange(value) {
+    this.setState({ smallDiameter: value });
+  }
+
+  nextPage() {
+    setLocalStorage("smallDiameter", this.state.smallDiameter);
+    this.props.navigation.push("ThreeComputePulley");
+  }
+
   render() {
     const header = "../../assets/images/vbeltcalc-logo.png";
-    const pic1 = "../../assets/images/2p-01.png";
+    const pic1 = "../../assets/images/3p-07.png";
+    const measuringUnits =
+      this.state.measuringUnits === "standard" ? "in." : "cm.";
 
     return (
       <Container>
@@ -50,10 +81,10 @@ export default class StepOneTwo extends React.Component {
             <ListItem style={theme.cream}>
               <Body>
                 <Text style={[theme.textOrange, theme.textCenter]}>
-                  STEP ONE
+                  STEP SEVEN
                 </Text>
                 <Text note style={[theme.textCenter, theme.textBlue]}>
-                  Adjust belt tensioner to center of travel
+                  Measure pulley C’s outside diameter
                 </Text>
               </Body>
             </ListItem>
@@ -64,6 +95,29 @@ export default class StepOneTwo extends React.Component {
                 style={{ width: "100%", height: 200 }}
               />
             </ListItem>
+            <ListItem itemDivider style={theme.cream}>
+              <Text style={[theme.textBlue, theme.textCenter]} note>
+                Pully C's Outside Diameter
+              </Text>
+            </ListItem>
+            <Form>
+              <Item inlineLabel>
+                <Label>Value:</Label>
+                <Input
+                  placeholder="0"
+                  keyboardType="numeric"
+                  value={`${this.state.smallDiameter}`}
+                  onChangeText={inputValue =>
+                    this.smallDiameterChange(inputValue)
+                  }
+                />
+                <Right>
+                  <Text note style={theme.paddingRight}>
+                    {measuringUnits}
+                  </Text>
+                </Right>
+              </Item>
+            </Form>
           </List>
         </Content>
         <Footer
@@ -75,7 +129,7 @@ export default class StepOneTwo extends React.Component {
         >
           <Left style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
               onPress={() => this.props.navigation.goBack()}
             >
@@ -87,9 +141,9 @@ export default class StepOneTwo extends React.Component {
           </Body>
           <Right style={{ flex: 1 }}>
             <Button
-              warning
+              style={theme.footerBtn}
               small
-              onPress={() => this.props.navigation.push("TwoTwoPulley")}
+              onPress={() => this.nextPage()}
             >
               <Text>Next</Text>
             </Button>
